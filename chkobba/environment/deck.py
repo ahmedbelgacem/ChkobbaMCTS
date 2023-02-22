@@ -1,4 +1,4 @@
-from card import Card, Suit
+from environment.card import Card, Suit
 from random import shuffle
 
 
@@ -24,7 +24,16 @@ class Deck:
         shuffle(self.cards)
 
     def __str__(self):
-        return " ".join([str(card) for card in self.cards])
+        output = ''
+        chunk_size = 10
+        chunks = [self.cards[i:i + chunk_size] for i in range(0, len(self.cards), chunk_size)]
+        for chunk in chunks:
+            output += '┌─────┐ '*len(chunk) + '\n' + \
+                    ('│{:>5}│ '*len(chunk)).format(*[card.suit.repr for card in chunk]) + '\n' + \
+                    ('│{:^5}│ '*len(chunk)).format(*[card.number for card in chunk]) + '\n' + \
+                    ('│{:<5}│ '*len(chunk)).format(*[card.suit.repr for card in chunk])+ '\n' + \
+                    '└─────┘ '*len(chunk) + '\n'
+        return output
 
     def __len__(self):
         return len(self.cards)
