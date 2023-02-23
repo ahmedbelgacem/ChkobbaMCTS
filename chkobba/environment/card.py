@@ -7,7 +7,7 @@ class Suit(str, Enum):
         obj._value_ = encoding
         obj.repr = repr
         return obj
-    SPADES: tuple = (1, '♠')
+    SPADES: tuple = (1, '♥')
     HEARTS: tuple = (2, '♠')
     DIAMONDS: tuple = (3, '♦')
     CLUBS: tuple = (4, '♣')

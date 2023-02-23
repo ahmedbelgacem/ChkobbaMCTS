@@ -1,4 +1,4 @@
-from environment.card import Card, Suit
+from environment import Card, Suit
 from random import shuffle
 
 
